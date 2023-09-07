@@ -44,8 +44,7 @@
 ## Start the Elixir shell
 
 -noshell
--user elixir
--run elixir start_iex
+-user Elixir.IEx.CLI
 
 
 ## Enable colors in the shell

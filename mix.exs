@@ -48,7 +48,7 @@ defmodule RclexUsageOnNerves.MixProject do
       # bumps to Nerves systems. Since these include Linux kernel and Erlang
       # version updates, please review their release notes in case
       # changes to your application are needed.
-      {:nerves_system_rpi4, "~> 1.19", runtime: false, targets: :rpi4}
+      {:nerves_system_rpi4, "== 1.22.2", runtime: false, targets: :rpi4}
     ]
   end
 
