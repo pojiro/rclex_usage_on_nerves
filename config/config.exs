@@ -20,6 +20,8 @@ config :nerves, :firmware, rootfs_overlay: "rootfs_overlay"
 
 config :nerves, source_date_epoch: "1694051506"
 
+config :rclex, ros2_message_types: ["std_msgs/msg/String"]
+
 if Mix.target() == :host do
   import_config "host.exs"
 else
