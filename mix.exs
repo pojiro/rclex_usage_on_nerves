@@ -34,9 +34,7 @@ defmodule RclexUsageOnNerves.MixProject do
       {:shoehorn, "~> 0.9.1"},
       {:ring_logger, "~> 0.10.0"},
       {:toolshed, "~> 0.3.0"},
-      {:rclex,
-       git: "https://github.com/rclex/rclex.git",
-       commit: "e9b8c2026cc4beac161b69fd3937ce08cbf27f68"},
+      {:rclex, git: "https://github.com/rclex/rclex.git", branch: "support-humble-nerves"},
 
       # Allow Nerves.Runtime on host to support development, testing and CI.
       # See config/host.exs for usage.
