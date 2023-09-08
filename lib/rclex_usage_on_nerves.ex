@@ -1,18 +1,22 @@
 defmodule RclexUsageOnNerves do
-  @moduledoc """
-  Documentation for RclexUsageOnNerves.
-  """
+  def publish_message do
+    context = Rclex.rclexinit()
+    {:ok, node} = Rclex.ResourceServer.create_node(context, 'talker')
+    {:ok, publisher} = Rclex.Node.create_publisher(node, 'StdMsgs.Msg.String', 'chatter')
 
-  @doc """
-  Hello world.
+    msg = Rclex.Msg.initialize('StdMsgs.Msg.String')
+    data = "Hello World from Rclex!"
+    msg_struct = %Rclex.StdMsgs.Msg.String{data: String.to_charlist(data)}
+    Rclex.Msg.set(msg, msg_struct, 'StdMsgs.Msg.String')
 
-  ## Examples
+    # This sleep is essential for now, see Issue #212
+    Process.sleep(100)
 
-      iex> RclexUsageOnNerves.hello
-      :world
+    IO.puts("Rclex: Publishing: #{data}")
+    Rclex.Publisher.publish([publisher], [msg])
 
-  """
-  def hello do
-    :world
+    Rclex.Node.finish_job(publisher)
+    Rclex.ResourceServer.finish_node(node)
+    Rclex.shutdown(context)
   end
 end
