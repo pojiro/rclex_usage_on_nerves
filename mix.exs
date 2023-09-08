@@ -3,7 +3,7 @@ defmodule RclexUsageOnNerves.MixProject do
 
   @app :rclex_usage_on_nerves
   @version "0.1.0"
-  @all_targets [:rpi4]
+  @all_targets [:rpi4, :custom_rpi4]
 
   def project do
     [
@@ -48,7 +48,9 @@ defmodule RclexUsageOnNerves.MixProject do
       # bumps to Nerves systems. Since these include Linux kernel and Erlang
       # version updates, please review their release notes in case
       # changes to your application are needed.
-      {:nerves_system_rpi4, "== 1.22.2", runtime: false, targets: :rpi4}
+      {:nerves_system_rpi4, "== 1.22.2", runtime: false, targets: :rpi4},
+      {:custom_rpi4,
+       path: "../custom_rpi4", runtime: false, targets: :custom_rpi4, nerves: [compile: true]}
     ]
   end
 
